@@ -31,6 +31,7 @@
 #include <sys/time.h>
 
 #include <linux/videodev2.h>
+#include "videodev2-fsr172x.h"
 
 #ifndef V4L2_BUF_FLAG_ERROR
 #define V4L2_BUF_FLAG_ERROR	0x0040
@@ -927,7 +928,7 @@ done:
 }
 
 #define V4L_BUFFERS_DEFAULT	8
-#define V4L_BUFFERS_MAX		32
+#define V4L_BUFFERS_MAX	32
 
 static void usage(const char *argv0)
 {
@@ -1025,7 +1026,7 @@ int main(int argc, char *argv[])
 
 	/* Capture loop */
 	unsigned int delay = 0, nframes = (unsigned int)-1;
-	const char *filename = "frame";
+	const char *filename = "/dev/shm/capture.output";
 
 	opterr = 0;
 	while ((c = getopt_long(argc, argv, "c::d:f:F::hi:ln:pq:r:s:t:uw:", opts, NULL)) != -1) {
